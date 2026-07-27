@@ -53,6 +53,22 @@ ORDER by year DESC;
 
 results4 = conn.execute(query4).fetchall()
 print('Annual Earnings')
-for row in results4:    print(f" {row[0]}: ${row[1]:,}")
+for row in results4:    
+    print(f" {row[0]}: ${row[1]:,}")
+
+query5= """
+SELECT player_winnings.player_name, SUM(earnings) as total_earnings
+FROM player_winnings
+JOIN player_info ON player_winnings.player_name = player_info.player_name
+WHERE player_status = 'Active' and earnings is not null
+ORDER by total_earnings DESC
+LIMIT 10;
+"""
+
+results5 = conn.execute(query5).fetchall()
+print('Top 10 Current Players Earnings')
+for row in results5:
+    earnings = row[1] if row[1] is not None else 0
+    print(f" {row[0]}: ${earnings:,}")
 
 conn.close()
