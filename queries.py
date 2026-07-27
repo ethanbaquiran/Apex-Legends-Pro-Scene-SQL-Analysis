@@ -60,7 +60,8 @@ query5= """
 SELECT player_winnings.player_name, SUM(earnings) as total_earnings
 FROM player_winnings
 JOIN player_info ON player_winnings.player_name = player_info.player_name
-WHERE player_status = 'Active' and earnings is not null
+WHERE player_status = 'Active'
+GROUP by player_winnings.player_name
 ORDER by total_earnings DESC
 LIMIT 10;
 """
