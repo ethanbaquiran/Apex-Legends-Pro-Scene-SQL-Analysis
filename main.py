@@ -9,9 +9,6 @@ orgs = pd.read_csv('apex/winnings_by_org_allYears.csv')
 players = pd.read_csv('apex/winnings_by_player_allYears.csv')
 player_info = pd.read_csv('apex/player_info.csv')
 
-# Drop messy columns
-player_info = player_info.drop(columns=['links'])
-
 # Push to SQLite
 orgs.to_sql('org_winnings', conn, if_exists='replace', index=False)
 players.to_sql('player_winnings', conn, if_exists='replace', index=False)

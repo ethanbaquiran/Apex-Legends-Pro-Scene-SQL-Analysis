@@ -68,7 +68,6 @@ LIMIT 10;
 results5 = conn.execute(query5).fetchall()
 print('Top 10 Current Players Earnings')
 for row in results5:
-    earnings = row[1] if row[1] is not None else 0
-    print(f" {row[0]}: ${earnings:,}")
+    print(f" {row[0]}: ${row[1]:,}")
 
 conn.close()
