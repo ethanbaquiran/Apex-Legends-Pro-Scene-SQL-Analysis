@@ -43,4 +43,16 @@ print('Top 10 Most Earning Orgs')
 for row in results3:
     print(f" {row[0]}: ${row[1]:,}")
 
+
+query4= """
+SELECT year, SUM(earnings) as annual_earnings
+FROM org_winnings
+GROUP BY year
+ORDER by year DESC;
+"""
+
+results4 = conn.execute(query4).fetchall()
+print('Annual Earnings')
+for row in results4:    print(f" {row[0]}: ${row[1]:,}")
+
 conn.close()
