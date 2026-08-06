@@ -71,4 +71,34 @@ print('Top 10 Current Players Earnings')
 for row in results5:
     print(f" {row[0]}: ${row[1]:,}")
 
+
+
+query6= """
+SELECT nationality, AVG(earnings) as national_earnings
+FROM player_winnings
+GROUP BY nationality
+ORDER BY national_earnings desc
+LIMIT 10;
+"""
+
+results6 = conn.execute(query6).fetchall()
+print('Top 10 Highest Earning Nations')
+for row in results6:
+    print(f" {row[0]}: ${round(row[1],2):,}")
+
+
+query7= """
+select player_info.team, sum(earnings) as total_earnings
+from player_winnings 
+join player_info on player_winnings.player_name = player_info.player_name
+where player_status = 'Active' and player_info.team is not null
+group by player_winnings.player_name
+order by total_earnings desc
+limit 10;
+"""
+results7 = conn.execute(query7).fetchall()
+print("Top 10 Highest Earning Player's Orgs")
+for row in results7:
+    print(f" {row[0]}: ${row[1]:,}")
+
 conn.close()
