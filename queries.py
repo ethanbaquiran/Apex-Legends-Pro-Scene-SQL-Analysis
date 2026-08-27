@@ -12,6 +12,7 @@ import pandas as pd
 
 conn = sqlite3.connect('apex.db')
 
+# Highest Earning players
 query1= """
 SELECT player_name, SUM(earnings) as total_earnings
 FROM player_winnings
@@ -25,6 +26,7 @@ print("Top 10 Highest Earning Players:")
 for row in results:
     print(f" {row[0]}: ${row[1]:,}")
 
+# Most Common Nationalities
 query2= """
 SELECT nationality, COUNT(player_name) as total_nations
 FROM player_winnings
@@ -38,7 +40,7 @@ print('Top 10 Most Common Nationalities')
 for row in results2:
     print(f" {row[0]}: {row[1]:,}")
 
-
+# Top Earning Orgs
 query3= """
 SELECT team, SUM(earnings) as total_earnings
 FROM org_winnings
@@ -52,7 +54,7 @@ print('Top 10 Most Earning Orgs')
 for row in results3:
     print(f" {row[0]}: ${row[1]:,}")
 
-
+# Annual Earnings bewteen Orgs
 query4= """
 SELECT year, SUM(earnings) as annual_earnings
 FROM org_winnings
@@ -65,6 +67,8 @@ print('Annual Earnings')
 for row in results4:    
     print(f" {row[0]}: ${row[1]:,}")
 
+# Top Current Earning Players
+#Join function where the From and the Join shows which tables are being used for this query
 query5= """
 SELECT player_winnings.player_name, SUM(earnings) as total_earnings
 FROM player_winnings
@@ -81,7 +85,7 @@ for row in results5:
     print(f" {row[0]}: ${row[1]:,}")
 
 
-
+# Highest Earning Nations
 query6= """
 SELECT nationality, AVG(earnings) as national_earnings
 FROM player_winnings
@@ -95,7 +99,8 @@ print('Top 10 Highest Earning Nations')
 for row in results6:
     print(f" {row[0]}: ${round(row[1],2):,}")
 
-
+# Highest Earning Player's Orgs
+# Another Join
 query7= """
 select player_info.team, sum(earnings) as total_earnings
 from player_winnings 
@@ -110,6 +115,7 @@ print("Top 10 Highest Earning Player's Orgs")
 for row in results7:
     print(f" {row[0]}: ${row[1]:,}")
 
+# Players that Earn Above Average
 query8= """
 select player_name, sum(earnings) as total_earnings
 from player_winnings
