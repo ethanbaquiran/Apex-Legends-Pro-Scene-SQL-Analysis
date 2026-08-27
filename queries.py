@@ -101,4 +101,18 @@ print("Top 10 Highest Earning Player's Orgs")
 for row in results7:
     print(f" {row[0]}: ${row[1]:,}")
 
+query8= """
+select player_name, sum(earnings) as total_earnings
+from player_winnings
+where earnings > (select avg(earnings) from player_winnings)
+group by player_name
+order by total_earnings desc
+limit 20;
+"""
+
+results8 = conn.execute(query8).fetchall()
+print("Players that Earn More than the Average:")
+for row in results8:
+    print(f" {row[0]}: ${row[1]:,}")
+
 conn.close()
