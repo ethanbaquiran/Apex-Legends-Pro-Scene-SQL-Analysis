@@ -115,4 +115,22 @@ print("Players that Earn More than the Average:")
 for row in results8:
     print(f" {row[0]}: ${row[1]:,}")
 
+# Which orgs have the most active players still competing?
+# Join on team, outer and count player names selecting team name and player_name
+query9 = """
+select player_info.team, count(player_name) as total
+from org_winnings
+join player_info on org_winnings.team = player_info.team
+where player_status = 'Active' and player_info.team is not NULL
+group by org_winnings.team
+order by total desc
+limit 10;
+"""
+
+results9 = conn.execute(query9).fetchall()
+print("Top 10 Orgs with the most Active players")
+for row in results9:
+    print(f" {row[0]}: {row[1]:,} players")
+
+# For each natioanlity, who is their highest earning player?
 conn.close()
