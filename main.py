@@ -14,6 +14,7 @@ orgs.to_sql('org_winnings', conn, if_exists='replace', index=False)
 players.to_sql('player_winnings', conn, if_exists='replace', index=False)
 player_info.to_sql('player_info', conn, if_exists='replace', index=False)
 
+# Sanity check
 print("Tables created:")
 for table in conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall():
     print(" -", table[0])
