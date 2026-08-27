@@ -1,6 +1,15 @@
 import sqlite3
 import pandas as pd
 
+#SELECT      -- 1. what columns to show
+#FROM        -- 2. which table
+#JOIN        -- 3. add another table
+#WHERE       -- 4. filter rows
+#GROUP BY    -- 5. group rows
+#HAVING      -- 4.5 filter after the GROUP BY
+#ORDER BY    -- 6. sort results
+#LIMIT       -- 7. how many rows
+
 conn = sqlite3.connect('apex.db')
 
 query1= """
@@ -132,5 +141,28 @@ print("Top 10 Orgs with the most Active players")
 for row in results9:
     print(f" {row[0]}: {row[1]:,} players")
 
-# For each natioanlity, who is their highest earning player?
+# For each nationality, who is their highest earning player?
+# Player_winnings, go by each nationality and sort by the earnings of the players and select the player_names for each earnings
+# Having is for after the group by and p2.nationality= player_winnings.nationality is a way to sort and look specifically between same values within a column
+query10= """
+select nationality, player_name, sum(earnings) as total_earnings
+from player_winnings
+group by nationality, player_name
+having total_earnings = (
+    select max(total)
+    from (
+        select sum(earnings) as total
+        from player_winnings p2
+        where p2.nationality = player_winnings.nationality
+        group by player_name
+        )
+)
+order by nationality;
+"""
+
+results10= conn.execute(query10).fetchall()
+print("Top Earning Player in each Nationality:")
+for row in results10:
+    print(f" {row[0]}: {row[1]}")
+
 conn.close()
