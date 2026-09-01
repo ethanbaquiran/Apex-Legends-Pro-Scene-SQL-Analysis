@@ -23,8 +23,8 @@ LIMIT 10;
 
 results = conn.execute(query1).fetchall()
 print("Top 10 Highest Earning Players:")
-for row in results:
-    print(f" {row[0]}: ${row[1]:,}")
+for i, row in enumerate(results,1):
+    print(f" {i}. {row[0]}: ${row[1]:,}")
 
 # Most Common Nationalities
 query2= """
@@ -36,9 +36,9 @@ LIMIT 10;
 """
 
 results2 = conn.execute(query2).fetchall()
-print('Top 10 Most Common Nationalities')
-for row in results2:
-    print(f" {row[0]}: {row[1]:,}")
+print('Top 10 Most Common Nationalities:')
+for i, row in enumerate(results2,1):
+    print(f" {i}. {row[0]}: {row[1]:,}")
 
 # Top Earning Orgs
 query3= """
@@ -50,9 +50,9 @@ LIMIT 10;
 """
 
 results3 = conn.execute(query3).fetchall()
-print('Top 10 Most Earning Orgs')
-for row in results3:
-    print(f" {row[0]}: ${row[1]:,}")
+print('Top 10 Most Earning Orgs:')
+for i, row in enumerate(results3, 1):
+    print(f" {i}. {row[0]}: ${row[1]:,}")
 
 # Annual Earnings between Orgs
 query4= """
@@ -63,7 +63,7 @@ ORDER by year DESC;
 """
 
 results4 = conn.execute(query4).fetchall()
-print('Annual Earnings')
+print('Annual Earnings:')
 for row in results4:    
     print(f" {row[0]}: ${row[1]:,}")
 
@@ -80,9 +80,9 @@ LIMIT 10;
 """
 
 results5 = conn.execute(query5).fetchall()
-print('Top 10 Current Players Earnings')
-for row in results5:
-    print(f" {row[0]}: ${row[1]:,}")
+print('Top 10 Current Players Earnings:')
+for i, row in enumerate(results5,1):
+    print(f" {i}. {row[0]}: ${row[1]:,}")
 
 
 # Highest Earning Nations
@@ -95,9 +95,9 @@ LIMIT 10;
 """
 
 results6 = conn.execute(query6).fetchall()
-print('Top 10 Highest Earning Nations')
-for row in results6:
-    print(f" {row[0]}: ${round(row[1],2):,}")
+print('Top 10 Highest Earning Nations:')
+for i,row in enumerate(results6,1):
+    print(f" {i}. {row[0]}: ${round(row[1],2):,}")
 
 # Highest Earning Player's Orgs
 # Another Join
@@ -111,9 +111,9 @@ order by total_earnings desc
 limit 10;
 """
 results7 = conn.execute(query7).fetchall()
-print("Top 10 Highest Earning Player's Orgs")
-for row in results7:
-    print(f" {row[0]}: ${row[1]:,}")
+print("Top 10 Highest Earning Player's Orgs:")
+for i, row in enumerate(results7,1):
+    print(f" {i}. {row[0]}: ${row[1]:,}")
 
 # Players that Earn Above Average
 query8= """
@@ -127,8 +127,8 @@ limit 20;
 
 results8 = conn.execute(query8).fetchall()
 print("Players that Earn More than the Average:")
-for row in results8:
-    print(f" {row[0]}: ${row[1]:,}")
+for i, row in enumerate(results8,1):
+    print(f" {i}. {row[0]}: ${row[1]:,}")
 
 # Which orgs have the most active players still competing?
 # Join on team, outer and count player names selecting team name and player_name
@@ -143,9 +143,9 @@ limit 10;
 """
 
 results9 = conn.execute(query9).fetchall()
-print("Top 10 Orgs with the most Active players")
-for row in results9:
-    print(f" {row[0]}: {row[1]:,} players")
+print("Top 10 Orgs with the most Active players:")
+for i, row in enumerate(results9,1):
+    print(f" {i}. {row[0]}: {row[1]:,} players")
 
 # For each nationality, who is their highest earning player?
 # Player_winnings, go by each nationality and sort by the earnings of the players and select the player_names for each earnings
