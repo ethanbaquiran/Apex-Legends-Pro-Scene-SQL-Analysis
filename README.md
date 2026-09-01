@@ -19,12 +19,12 @@ Three CSV files loaded into a SQLite database:
 
 ## Project Structure
 Apex-Legends-Pro-Scene-SQL-Analysis/
-|- apex/               # Raw CSV datasets
-|- main.py             # Loads CSVs into SQLite database
-|- queries.py          # All SQL queries and analysis
-|- visuals.py          # Matplotlib visualizations
-|- apex.db             # SQLite database
-|- README.md
+- apex/               # Raw CSV datasets
+- main.py             # Loads CSVs into SQLite database
+- queries.py          # All SQL queries and analysis
+- visuals.py          # Matplotlib visualizations
+- apex.db             # SQLite database
+- README.md
 
 ## Key Questions Answered
 1. Who are the top 10 highest earning players of all time?
