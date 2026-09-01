@@ -18,7 +18,7 @@ Three CSV files loaded into a SQLite database:
 - matplotlib
 
 ## Project Structure
-apex-capstone/
+Apex-Legends-Pro-Scene-SQL-Analysis/
 ├── apex/               # Raw CSV datasets
 ├── main.py             # Loads CSVs into SQLite database
 ├── queries.py          # All SQL queries and analysis
@@ -46,6 +46,14 @@ apex-capstone/
 5. Run python visuals.py to generate charts
 
 ## Key Findings
-- TSM is the highest earning org all time with over $576,000 in winnings
-- The United States has the most pro players with 370, nearly double Japan in second
-- Brazil, Russia, and Thailand round out the top 5 nationalities
+- Kouhia is the highest earning Apex Legends pro player with $21,314 in career earnings
+- TSM is the highest earning org all time with over $576,000 in winnings, nearly double NRG in second
+- The United States dominates with 370 pro players, nearly double Japan in second place
+- Slovenia has the highest average earnings per player despite having few players overall
+- 2021 was the biggest year for Apex esports prize money with over $4.5 million distributed
+- TSM has the most active players still competing with 28, followed by Team Liquid and NRG with 20 each
+- Finland's Kouhia tops the earnings chart, showing small countries can produce elite players
+
+## Limitations
+- Player team assignments reflect current team, not historical team per year
+- Dataset covers 2019-2022 only
