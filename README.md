@@ -1,15 +1,15 @@
 # Apex Legends Pro Scene SQL Analysis
 
-> Who dominates the Apex Legends pro scene — and is it still the same today?
+> Who dominates the Apex Legends pro scene and is it still the same today?
 
 ## Overview
-This project uses SQL to analyze professional Apex Legends player and organization earnings data across multiple years. Built with Python and SQLite, the database contains three relational tables covering player winnings, org winnings, and player info. Queries explore top earning players, dominant organizations, nationality breakdowns, and year-over-year prize money trends — all visualized with matplotlib.
+This project uses SQL to analyze professional Apex Legends player and organization earnings data across multiple years. Built with Python and SQLite, the database contains three relational tables covering player winnings, org winnings, and player info. Queries explore top earning players, dominant organizations, nationality breakdowns, and year-over-year prize money trends - all visualized with matplotlib.
 
 ## Dataset
 Three CSV files loaded into a SQLite database:
-- `winnings_by_player_allYears.csv` — player earnings by year and nationality
-- `winnings_by_org_allYears.csv` — organization earnings by year
-- `player_info.csv` — player details including team and active status
+- `winnings_by_player_allYears.csv` - player earnings by year and nationality
+- `winnings_by_org_allYears.csv` - organization earnings by year
+- `player_info.csv` - player details including team and active status
 
 ## Tools Used
 - Python
@@ -19,12 +19,12 @@ Three CSV files loaded into a SQLite database:
 
 ## Project Structure
 Apex-Legends-Pro-Scene-SQL-Analysis/
-├── apex/               # Raw CSV datasets
-├── main.py             # Loads CSVs into SQLite database
-├── queries.py          # All SQL queries and analysis
-├── visuals.py          # Matplotlib visualizations
-├── apex.db             # SQLite database
-└── README.md
+|- apex/               # Raw CSV datasets
+├- main.py             # Loads CSVs into SQLite database
+|- queries.py          # All SQL queries and analysis
+|- visuals.py          # Matplotlib visualizations
+|- apex.db             # SQLite database
+|- README.md
 
 ## Key Questions Answered
 1. Who are the top 10 highest earning players of all time?
