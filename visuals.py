@@ -68,3 +68,44 @@ plt.xticks([2019,2020,2021,2022])
 plt.ticklabel_format(axis = 'y', style = 'plain')
 plt.tight_layout()
 plt.show()
+
+# Most Common Nationalities
+query4= """
+SELECT nationality, COUNT(player_name) as total_nations
+FROM player_winnings
+GROUP BY nationality
+ORDER BY total_nations DESC
+LIMIT 10;
+"""
+
+results4 = conn.execute(query4).fetchall()
+nation4 = [row[0] for row in results4]
+players4 = [row[1] for row in results4]
+
+plt.figure(figsize=(12,6))
+plt.barh(nation4[::-1],players4[::-1], color = 'darkred')
+plt.xlabel('Player Count')
+plt.ylabel('Nations')
+plt.title('Most Common Nationalities by Player Count')
+plt.tight_layout()
+plt.show()
+
+# Highest Earning Nations by AVG
+query5= """
+SELECT nationality, AVG(earnings) as national_earnings
+FROM player_winnings
+GROUP BY nationality
+ORDER BY national_earnings desc
+LIMIT 10;
+"""
+
+results5 = conn.execute(query5).fetchall()
+nation5 = [row[0] for row in results5]
+avgearnings5 = [row[1] for row in results5]
+
+plt.figure(figsize = (12,6))
+plt.barh(nation5[::-1],avgearnings5[::-1], color = 'darkgreen')
+plt.xlabel('Average Earnings ($)')
+plt.title('Highest Average Earnings Among Nations')
+plt.tight_layout()
+plt.show()
