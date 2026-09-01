@@ -54,7 +54,7 @@ print('Top 10 Most Earning Orgs')
 for row in results3:
     print(f" {row[0]}: ${row[1]:,}")
 
-# Annual Earnings bewteen Orgs
+# Annual Earnings between Orgs
 query4= """
 SELECT year, SUM(earnings) as annual_earnings
 FROM org_winnings
